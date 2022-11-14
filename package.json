@@ -1,0 +1,21 @@
+{
+  "name": "jobslate-services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-mongodb-local": "^1.5.2",
+    "serverless-offline": "^11.3.0"
+  },
+  "dependencies": {
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.7.2",
+    "node": "^19.0.1",
+    "serverless-bundle": "^5.5.0"
+  }
+}

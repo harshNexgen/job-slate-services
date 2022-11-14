@@ -1,0 +1,57 @@
+functions:
+  companies-info:
+    name: companies-info-${self:custom.stage}
+    handler:  homepage-services/handler.companiesInfo
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /company/{id}
+          method: get
+          cors: true
+  get-companies:
+    name: get-companies-paginated-${self:custom.stage}
+    handler:  homepage-services/handler.getCompanies
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /companies
+          method: get
+          cors: true
+  get-job-company-name:
+    name: get-job-company-name-${self:custom.stage}
+    handler:  homepage-services/handler.getJobByCompanyName
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /job/company/{company}
+          method: get
+          cors: true
+
+  get-job-category-id:
+    name: get-job-category-id-${self:custom.stage}
+    handler:  homepage-services/handler.getJobByCategory
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /job/category/{id}
+          method: get
+          cors: true
+
+  get-all-category:
+    name: get-all-categories-${self:custom.stage}
+    handler:  homepage-services/handler.getAllCategory
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /category
+          method: get
+          cors: true
+  get-companies-by-category-id:
+    name: get-companies-by-category-id-${self:custom.stage}
+    handler:  homepage-services/handler.getCompaniesByCategory
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /companies/{category}
+          method: get
+          cors: true
