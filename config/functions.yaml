@@ -55,3 +55,12 @@ functions:
           path: /companies/{category}
           method: get
           cors: true
+  get-jobs-by-salary:
+    name: get-jobs-by-salary-${self:custom.stage}
+    handler:  homepage-services/handler.getJobBySalaryExpec
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /job
+          method: get
+          cors: true

@@ -75,6 +75,8 @@ functions:
   get-job-category-id: ${file(config/functions.yaml):functions.get-job-category-id}
   get-all-category: ${file(config/functions.yaml):functions.get-all-category}
   get-companies-by-category-id: ${file(config/functions.yaml):functions.get-companies-by-category-id}
+  get-jobs-by-salary: ${file(config/functions.yaml):functions.get-jobs-by-salary}
+
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

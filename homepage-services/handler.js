@@ -116,9 +116,9 @@ export const getCompaniesByCategory = async (event, context) => {
         const data = await Postings.aggregate([
 
             { $match: { categoryId: category } },
-              { $group: { _id: "$companyId" } },  
-          
-           
+            { $group: { _id: "$companyId" } },
+
+
             {
                 $lookup: {
                     from: "uk_companies",
@@ -127,10 +127,10 @@ export const getCompaniesByCategory = async (event, context) => {
                     as: "Company"
                 }
             },
-          
+
         ])
         if (data[0] != null || data[0] != undefined) {
-            return createResponse(200, { response: data})
+            return createResponse(200, { response: data })
         }
     } catch (err) {
         console.log(err);
@@ -141,6 +141,28 @@ export const getCompaniesByCategory = async (event, context) => {
 
 export const getJobBySalaryExpec = async (event, context) => {
     try {
+        if (event.queryStringParameters != null) {
+            let {min,max} = event.queryStringParameters;
+            if(min==undefined){
+                min = 0
+            }
+            min = parseInt(min);
+            max = parseInt(max);
+            const data = await Postings.find({
+                $and:[
+                    {$or:[{"salary.maxAmount":{$lt:max}},{"salary.maxAmount":{$eq:max}}]}
+                ]
+            })
+            if(data){
+                return createResponse(200,{response:data});
+            }
+            if(data[0]==undefined){
+                return createResponse(400,{response:"Data not found !"})
+            }
+        } else {
+            return createResponse(400, { response: "Required query string not found" });
+        }
+
         /* doubt on minimum and maximum salary , or we should decide the range of salary */
     } catch (err) {
         console.log(err);
