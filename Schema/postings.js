@@ -60,6 +60,9 @@ const post = new mongoose.Schema({
     longitude: {
         type: String,
     },
+    location: {
+        type: String,
+    },
     postedAt: {
         type: String,
     },

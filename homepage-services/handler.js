@@ -168,3 +168,26 @@ export const getJobBySalaryExpec = async (event, context) => {
         console.log(err);
     }
 }
+
+
+export const getJobByLocation =async (event,context)=>{
+    console.log(event.body)
+    if(event.body===null){
+        return createResponse(400,{response:"Required details not found"});
+    }
+    const {city,country,location} = JSON.parse(event.body);
+    console.log(city,country,location);
+    const data = await Postings.find({
+        $or:[
+            {city:city},
+             {location:location}
+        ]
+    })
+    console.log(data[0]);
+    if(data[0]!=undefined){
+        return createResponse(200,{response:data});
+    }else{
+        return createResponse(400,{response:"Jobs Not Found"})
+    }
+    
+}

@@ -64,3 +64,13 @@ functions:
           path: /job
           method: get
           cors: true
+
+  get-jobs-by-location:
+    name: get-jobs-by-location-${self:custom.stage}
+    handler:  homepage-services/handler.getJobByLocation
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /job/location
+          method: post
+          cors: true
