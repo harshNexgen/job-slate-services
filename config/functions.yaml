@@ -74,3 +74,13 @@ functions:
           path: /job/location
           method: post
           cors: true
+
+  get-job-filter:
+    name: get-job-filter-${self:custom.stage}
+    handler:  homepage-services/handler.getJobFilter
+    environment: ${file(./env.yaml):${self:custom.stage}}
+    events:
+      - http:
+          path: /job/list/
+          method: get
+          cors: true  

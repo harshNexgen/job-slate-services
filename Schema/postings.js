@@ -11,12 +11,14 @@ const post = new mongoose.Schema({
     },
     category: {
         type: String,
+        index: true
     },
     categoryId: {
         type: String,
     },
     city: {
         type: String,
+        index: true
     },
     cityId: {
         type: String,
@@ -26,12 +28,14 @@ const post = new mongoose.Schema({
     },
     company: {
         type: String,
+        index: true
     },
     companyId: {
         type: String,
     },
     country: {
         type: String,
+        index: true
     },
     cpc: {
         type: Number,
@@ -62,12 +66,14 @@ const post = new mongoose.Schema({
     },
     location: {
         type: String,
+        index: true
     },
     postedAt: {
         type: String,
     },
     region: {
         type: String,
+        index: true
     },
     salary: {
         type: Object,

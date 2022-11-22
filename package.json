@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "serverless-middleware": "^3.0.0",
     "serverless-mongodb-local": "^1.5.2",
     "serverless-offline": "^11.3.0"
   },
