@@ -191,3 +191,4 @@ export const getJobByLocation =async (event,context)=>{
     }
     
 }
+
